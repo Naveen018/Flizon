@@ -1,0 +1,8 @@
+services:
+  web:
+    build:
+      context: . # Directory containing the Dockerfile
+    ports:
+      - "8000:8000" # Map port 8000 on the host to port 8000 in the container
+    volumes:
+      - .:/app # Bind mount the current directory to the container
