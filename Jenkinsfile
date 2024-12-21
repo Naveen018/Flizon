@@ -30,6 +30,8 @@ pipeline{
                         docker run -d --name ecommerce-app -p 80:80 naveenv/ecommerce-app:${BUILD_NUMBER}
                         EOF
                     '''
+                    }
+                }
             }
         }
     }
