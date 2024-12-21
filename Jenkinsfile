@@ -16,6 +16,7 @@ pipeline{
                 withCredentials([usernamePassword(credentialsId: 'Docker-hub-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                 sh "echo $PASS | docker login -u $USER --password-stdin"
                 sh 'docker push naveenv/ecommerce-app:${BUILD_NUMBER}'
+                }
             }
         }
         stage("Deploy"){
@@ -30,7 +31,6 @@ pipeline{
                         docker run -d --name ecommerce-app -p 80:80 naveenv/ecommerce-app:${BUILD_NUMBER}
                         EOF
                     '''
-                    }
                 }
             }
         }
