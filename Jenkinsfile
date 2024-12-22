@@ -25,7 +25,7 @@ pipeline{
                 echo "Deploying the application to EC2..."
                 withCredentials([file(credentialsId: 'ec2-pem-file', variable: 'PEM_FILE')]) {
                     sh '''
-                        ssh -i $PEM_FILE -o StrictHostKeyChecking=no ubuntu@43.205.36.232 << 'EOF'
+                        ssh -i $PEM_FILE -o StrictHostKeyChecking=no ubuntu@43.205.36.232 << EOF
                         docker pull naveenv3112/ecommerce-app:${BUILD_NUMBER}
                         docker stop ecommerce-app || true
                         docker rm ecommerce-app || true
