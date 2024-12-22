@@ -29,7 +29,7 @@ pipeline{
                         docker pull naveenv3112/ecommerce-app:${BUILD_NUMBER}
                         docker stop ecommerce-app || true
                         docker rm ecommerce-app || true
-                        docker run -d --name ecommerce-app -p 80:80 naveenv3112/ecommerce-app:${BUILD_NUMBER}
+                        docker run -d --name ecommerce-app -p 80:8000 naveenv3112/ecommerce-app:${BUILD_NUMBER}
                         EOF
                     '''
                 }
