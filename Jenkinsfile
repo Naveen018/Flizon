@@ -26,11 +26,11 @@ pipeline{
                 withCredentials([file(credentialsId: 'ec2-pem-file', variable: 'PEM_FILE')]) {
                     sh '''
                         ssh -i $PEM_FILE -o StrictHostKeyChecking=no ubuntu@43.205.36.232 << EOF
-                        docker pull naveenv3112/ecommerce-app:${BUILD_NUMBER}
-                        docker stop ecommerce-app || true
-                        docker rm ecommerce-app || true
-                        docker run -d --name ecommerce-app -p 80:8000 naveenv3112/ecommerce-app:${BUILD_NUMBER}
-                        EOF
+                            docker pull naveenv3112/ecommerce-app:${BUILD_NUMBER}
+                            docker stop ecommerce-app || true
+                            docker rm ecommerce-app || true
+                            docker run -d --name ecommerce-app -p 80:8000 naveenv3112/ecommerce-app:${BUILD_NUMBER}
+                        << EOF
                     '''
                 }
             }
