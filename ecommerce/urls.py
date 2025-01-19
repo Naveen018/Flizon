@@ -16,6 +16,7 @@ urlpatterns = [
     # Store app
 
     path('', include('store.urls')),
+    path('', include('django_prometheus.urls')),
 
 
     # Cart app

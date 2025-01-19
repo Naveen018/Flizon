@@ -10,7 +10,7 @@ pipeline{
                 sh 'docker build -t naveenv/ecommerce-app:${BUILD_NUMBER} .'
             }
         }
-        stage("Test"){
+        stage("Push"){
             steps{
                 echo "Pushing Docker Image to Docker Hub Repo..."
                 withCredentials([usernamePassword(credentialsId: 'Docker-hub-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]) {

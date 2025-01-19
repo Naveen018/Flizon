@@ -2,7 +2,22 @@ services:
   web:
     build:
       context: . # Directory containing the Dockerfile
+    container_name: django-ecommerce
     ports:
       - "8000:8000" # Map port 8000 on the host to port 8000 in the container
     volumes:
       - .:/app # Bind mount the current directory to the container
+
+  prom-server:
+    image: prom/prometheus
+    container_name: prometheus
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana-server:
+    image: grafana/grafana-oss
+    container_name: grafana
+    ports:
+      - 3010:3010
